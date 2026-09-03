@@ -1,4 +1,4 @@
-import { createAuthorService } from "../services/author.services.js";
+import { createAuthorService, getAllAuthorsService, getAuthorService, updateAuthorService } from "../services/author.services.js";
 
 export const createAuthor = async (req, res) => {
 
@@ -73,3 +73,127 @@ export const createAuthor = async (req, res) => {
         });
     }
 };
+
+export const getAuthor = async (req, res) => {
+
+    try {
+
+        const { id } = req.params;
+
+
+        const result = await getAuthorService(
+            id
+        );
+
+
+        res.status(200).json({
+            success: true,
+            message: "Author fetched successfully",
+            data: result
+        });
+
+
+    } catch (error) {
+
+        console.log(
+            "Get author error:",
+            error
+        );
+
+
+        res.status(
+            error.statusCode || 500
+        ).json({
+            success: false,
+            message:
+                error.message ||
+                "Internal server error"
+        });
+    }
+};
+
+export const updateAuthor = async (req, res) => {
+
+    try {
+
+        const { id } = req.params;
+
+
+        const {
+            name,
+            bio,
+            email
+        } = req.body;
+
+
+        const authorImage = req.file;
+
+
+        const result = await updateAuthorService({
+            authorId: id,
+            name,
+            bio,
+            email,
+            authorImage
+        });
+
+
+        res.status(200).json({
+            success: true,
+            message: "Author updated successfully",
+            data: result
+        });
+
+
+    } catch (error) {
+
+        console.log(
+            "Update author error:",
+            error
+        );
+
+
+        res.status(
+            error.statusCode || 500
+        ).json({
+            success: false,
+            message:
+                error.message ||
+                "Internal server error"
+        });
+    }
+};
+
+export const getAllAuthors = async (req, res) => {
+
+    try {
+
+        const result = await getAllAuthorsService();
+
+
+        res.status(200).json({
+            success: true,
+            message: "Authors fetched successfully",
+            data: result
+        });
+
+
+    } catch (error) {
+
+        console.log(
+            "Get all authors error:",
+            error
+        );
+
+
+        res.status(
+            error.statusCode || 500
+        ).json({
+            success: false,
+            message:
+                error.message ||
+                "Internal server error"
+        });
+    }
+};
+
