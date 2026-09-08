@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "imagekit": "^6.0.0",
-    "multer": "^2.3.0"
-  }
-}
