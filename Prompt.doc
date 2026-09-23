@@ -1,0 +1,24 @@
+Your are a senior developer.
+
+You have to make home page as in the reference link . 
+
+Navbar must have same three layers , first one is advertisement ,
+ second is logo , search bar , currency selection , language selection , user , whishlist , and add to cart
+ third is links and and help center
+
+ Everything and design should be the exact in the reference link .
+
+I have the backend ready with my own and you do not have to change anything in that .
+
+I already made pages and content and services folder and files in that with correct names according to needed apis whould be called fro backend and stored in context files as global variables.
+
+Use service folder to call apis with axios.
+Use Components folder to make component of every new section to maintain reusability and component based architecture .
+Use context folder to store global variables.
+Use App.jsx file for routes handling and Main.jsx will be entry point and Home.jsx will be index for my project.
+
+
+In news and event section you have to use demo images and everything as in the reference link.
+
+reference link :-https://ap-bokifa.myshopify.com/
+Password :- 1
