@@ -2,6 +2,13 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom"
 import { Main } from "./layouts/Main"
 import { Home } from "./pages/Home"
 import { Books as PublicBooks } from "./pages/Books"
+
+import { Search } from "./pages/Search"
+import { Cart } from "./pages/Cart"
+import { Wishlist } from "./pages/Wishlist"
+
+import { CartProvider } from "./context/shop/CartContext"
+import { WishlistProvider } from "./context/shop/WishlistContext"
 import { Author as PublicAuthors } from "./pages/Author"
 import { Blogs as PublicBlogs } from "./pages/Blogs"
 import { AuthProvider, useAuth } from "./context/admin/AuthContext"
@@ -37,7 +44,7 @@ const AdminRoute = ({ children }) => {
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />
   }
-  // Authenticated but not an admin -> show the error page ("No route is exists")
+
   if (!isAdmin) {
     return <ErrorPage />
   }
@@ -59,7 +66,7 @@ const CustomerRoute = ({ children }) => {
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />
   }
-  // Admins are NEVER auto-redirected into /admin - send them home instead
+
   if (!isCustomer) {
     return <Navigate to="/" replace />
   }
@@ -68,7 +75,10 @@ const CustomerRoute = ({ children }) => {
 
 export default function App() {
   return (
+
     <AuthProvider>
+      <CartProvider>
+        <WishlistProvider>
       <AuthorProvider>
         <BooksProvider>
           <BlogProvider>
@@ -78,6 +88,10 @@ export default function App() {
                 <Route path="/" element={<Main />}>
                   <Route index element={<Home />} />
                   <Route path="/books" element={<PublicBooks />} />
+                  
+                  <Route path="/search" element={<Search />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/wishlist" element={<Wishlist />} />
                   <Route path="/authors" element={<PublicAuthors />} />
                   <Route path="/blogs" element={<PublicBlogs />} />
                 </Route>
@@ -115,6 +129,8 @@ export default function App() {
           </BlogProvider>
         </BooksProvider>
       </AuthorProvider>
+        </WishlistProvider>
+      </CartProvider>
     </AuthProvider>
   )
 }

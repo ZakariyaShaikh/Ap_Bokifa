@@ -25,17 +25,17 @@ export default function Modal({ isOpen, onClose, title, children, size = "md" })
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      {/* Backdrop */}
+      
       <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       />
 
-      {/* Modal */}
+      
       <div
         className={`relative bg-white rounded-xl shadow-xl w-full ${sizeClasses[size]} mx-4 max-h-[90vh] overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-200`}
       >
-        {/* Header */}
+        
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
           <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
           <button
@@ -46,7 +46,7 @@ export default function Modal({ isOpen, onClose, title, children, size = "md" })
           </button>
         </div>
 
-        {/* Content */}
+        
         <div className="flex-1 overflow-y-auto p-6">{children}</div>
       </div>
     </div>

@@ -11,7 +11,7 @@ export default function UserDashboard() {
 
   return (
     <div className="max-w-4xl mx-auto">
-      {/* Header */}
+      
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-4">
           <div className="w-14 h-14 rounded-full bg-[#0f5a45] flex items-center justify-center">
@@ -28,7 +28,7 @@ export default function UserDashboard() {
         </div>
       </div>
 
-      {/* User Info Card */}
+      
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 mb-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
           <User className="w-5 h-5 text-[#0f5a45]" />
@@ -56,7 +56,7 @@ export default function UserDashboard() {
         </div>
       </div>
 
-      {/* Quick Links */}
+      
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <Link
           to="/books"
@@ -72,7 +72,7 @@ export default function UserDashboard() {
         </Link>
       </div>
 
-      {/* Logout Button */}
+      
       <div className="border-t border-gray-200 pt-6">
         <button
           onClick={logout}

@@ -42,7 +42,7 @@ export const Testimonials = () => {
           {testimonials.map((t) => (
             <SwiperSlide key={t.id}>
               <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 min-h-[320px] flex flex-col">
-                {/* Header Row */}
+                
                 <div className="flex flex-col mb-6">
                   <h3 className="font-semibold text-gray-900 mb-1">{t.name}</h3>
                   <div className="flex justify-between items-center">
@@ -55,7 +55,7 @@ export const Testimonials = () => {
                   </div>
                 </div>
 
-                {/* Body Row */}
+                
                 <div className="flex flex-col flex-grow">
                   <h4 className="font-bold text-gray-800 mb-3">{t.title}</h4>
                   <p className="text-gray-600 leading-relaxed">{t.review}</p>

@@ -109,6 +109,7 @@ export const HeroSection = () => {
                   </div>
                 </div>
 
+                
                 {slide.badge && slide.layout === 'left' && (
                   <div className="absolute left-[50%] lg:left-[45%] top-[35%] lg:top-[30%]">
                     <ScallopedBadge text={slide.badge} colorClass={slide.badgeColor} />
@@ -119,37 +120,6 @@ export const HeroSection = () => {
                     <ScallopedBadge text={slide.badge} colorClass={slide.badgeColor} />
                   </div>
                 )}
-
-      <style dangerouslySetInnerHTML={{ __html: `
-        .custom-bullet {
-          width: 8px;
-          height: 8px;
-          background: #fff;
-          opacity: 0.5;
-          border-radius: 50%;
-          display: inline-block;
-          margin: 0 6px !important;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
-        .custom-bullet-active {
-          width: 24px !important;
-          height: 8px !important;
-          background: #0e3d2f !important;
-          border-radius: 9999px !important;
-          opacity: 1 !important;
-        }
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        .animate-spin-slow {
-          animation: spin-slow 20s linear infinite;
-        }
-        .swiper-pagination {
-          bottom: 32px !important;
-        }
-      `}} />
 
               </div>
             </div>

@@ -263,7 +263,7 @@ export default function Blogs() {
 
   return (
     <div className="space-y-6">
-      {/* Page Header */}
+      
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h1 className="text-2xl font-semibold text-gray-900">Blogs</h1>
         <button onClick={openCreate}
@@ -272,7 +272,7 @@ export default function Blogs() {
         </button>
       </div>
 
-      {/* Filters */}
+      
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -288,7 +288,7 @@ export default function Blogs() {
         </select>
       </div>
 
-      {/* Table / Empty / Skeleton */}
+      
       {loading ? (
         <BlogsSkeleton />
       ) : blogsError ? (
@@ -373,22 +373,22 @@ export default function Blogs() {
         </div>
       )}
 
-      {/* Create Modal */}
+      
       <Modal isOpen={isCreateOpen} onClose={() => setIsCreateOpen(false)} title="Create New Blog" size="lg">
         <BlogForm blog={null} onClose={() => { setIsCreateOpen(false); fetchBlogs(); }} isEditing={false} />
       </Modal>
 
-      {/* Edit Modal */}
+      
       <Modal isOpen={isEditOpen} onClose={() => setIsEditOpen(false)} title="Edit Blog" size="lg">
         <BlogForm blog={selected} onClose={() => { setIsEditOpen(false); fetchBlogs(); }} isEditing={true} />
       </Modal>
 
-      {/* View Modal */}
+      
       <Modal isOpen={isViewOpen} onClose={() => setIsViewOpen(false)} title="Blog Details" size="xl">
         <BlogView blog={selected} onClose={() => setIsViewOpen(false)} />
       </Modal>
 
-      {/* Delete Confirmation */}
+      
       <ConfirmDialog
         isOpen={isDelOpen}
         onClose={() => { setIsDelOpen(false); setSelected(null); setDelId(null); }}

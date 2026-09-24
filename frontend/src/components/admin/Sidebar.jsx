@@ -21,7 +21,7 @@ const Sidebar = ({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }) => {
 
   return (
     <>
-      {/* Mobile Overlay */}
+      
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
@@ -29,14 +29,14 @@ const Sidebar = ({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }) => {
         />
       )}
 
-      {/* Sidebar */}
+      
       <aside
         className={`fixed top-0 left-0 h-full z-50 transition-all duration-300 ease-in-out
           ${isCollapsed ? "w-16" : "w-64"}
           ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
           bg-white border-r border-gray-200 shadow-sm`}
       >
-        {/* Logo */}
+        
         <div className="h-16 flex items-center justify-between px-4 border-b border-gray-200">
           {!isCollapsed && (
             <Link to="/admin" className="flex items-center gap-2">
@@ -52,7 +52,7 @@ const Sidebar = ({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }) => {
             </div>
           )}
 
-          {/* Mobile Close */}
+          
           <button
             onClick={() => setIsOpen(false)}
             className="lg:hidden p-1 rounded hover:bg-gray-100"
@@ -61,7 +61,7 @@ const Sidebar = ({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }) => {
           </button>
         </div>
 
-        {/* Navigation */}
+        
         <nav className="p-2 space-y-1">
           {menuItems.map((item) => {
             const isActive = location.pathname === item.path;
@@ -87,7 +87,7 @@ const Sidebar = ({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }) => {
           })}
         </nav>
 
-        {/* Collapse Toggle - Desktop Only */}
+        
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
           className="hidden lg:flex absolute bottom-4 right-0 translate-x-1/2 w-6 h-6 items-center justify-center 

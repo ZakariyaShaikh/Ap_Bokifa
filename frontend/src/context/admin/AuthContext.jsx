@@ -3,7 +3,7 @@ import { authService } from "../../services/admin/api";
 
 const AuthContext = createContext(null);
 
-// eslint-disable-next-line react-refresh/only-export-components
+
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -20,12 +20,12 @@ export const AuthProvider = ({ children }) => {
   const [pendingEmail, setPendingEmail] = useState(null);
 
   const logout = () => {
-    // Clear memory storage
+
     setAccessToken(null);
     setUser(null);
     setIsAuthenticated(false);
     setPendingEmail(null);
-    // Clear cookies
+
     document.cookie = "refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     localStorage.removeItem("accessToken");
     localStorage.removeItem("user");
@@ -55,9 +55,9 @@ export const AuthProvider = ({ children }) => {
     const response = await authService.login(email, password);
 
     if (response.success) {
-      // Check if user needs verification
+
       if (response.requiresVerification) {
-        // Store email for verification flow
+
         setPendingEmail(email);
         return { 
           success: true, 
@@ -66,12 +66,12 @@ export const AuthProvider = ({ children }) => {
         };
       }
 
-      // Store access token in memory
+
       setAccessToken(response.accessToken);
-      // Store user data in memory
+
       setUser(response.user);
       setIsAuthenticated(true);
-      // Also store in localStorage for persistence
+
       localStorage.setItem("accessToken", response.accessToken);
       localStorage.setItem("user", JSON.stringify(response.user));
       return { success: true, user: response.user };
@@ -95,7 +95,7 @@ export const AuthProvider = ({ children }) => {
     return response;
   };
 
-  // Get the current access token
+
   const getAccessToken = () => {
     return accessToken || localStorage.getItem("accessToken");
   };

@@ -13,9 +13,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [verificationSent, setVerificationSent] = useState(false);
 
-  // Redirect if already logged in.
-  // Admins are NOT sent to /admin automatically - they navigate to /admin
-  // explicitly, where AdminRoute checks user.role === "admin".
+
   if (isAuthenticated) {
     if (user?.role === "admin") {
       navigate("/", { replace: true });
@@ -41,13 +39,11 @@ export default function Login() {
       
       if (result.success) {
         if (result.requiresVerification) {
-          // User is not verified - show verification message and redirect to verify page
+
           setVerificationSent(true);
           setPendingEmail(email);
         } else {
-          // User is verified - redirect based on role.
-          // Use result.user (fresh from the backend response), not the stale `user` state.
-          // Admins go home; /admin is only reachable by navigating there explicitly.
+
           if (result.user?.role === "admin") {
             navigate("/");
           } else {
@@ -69,7 +65,7 @@ export default function Login() {
     }
   };
 
-  // Verification sent state
+
   if (verificationSent) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#f4f3f1] px-4">
@@ -108,7 +104,7 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#f4f3f1] px-4">
       <div className="w-full max-w-md">
-        {/* Logo */}
+        
         <div className="flex flex-col items-center mb-8">
           <div className="w-16 h-16 rounded-xl bg-[#0f5a45] flex items-center justify-center mb-4">
             <BookOpen className="w-8 h-8 text-white" />
@@ -117,7 +113,7 @@ export default function Login() {
           <p className="text-gray-500 mt-1">Sign In</p>
         </div>
 
-        {/* Form Card */}
+        
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-8">
           {error && (
             <div className="flex items-start gap-3 mb-6 px-4 py-3 bg-red-50 border border-red-200 rounded-lg">
@@ -181,7 +177,7 @@ export default function Login() {
             </button>
           </form>
 
-          {/* Register Link */}
+          
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-500">
               Don't have an account?{" "}

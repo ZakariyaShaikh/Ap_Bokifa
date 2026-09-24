@@ -3,7 +3,7 @@ import { CheckCircle, XCircle, AlertCircle, X } from "lucide-react";
 
 const ToastContext = createContext(null);
 
-// eslint-disable-next-line react-refresh/only-export-components
+
 export function useToast() {
   const context = useContext(ToastContext);
   if (!context) {

@@ -3,7 +3,7 @@ import { authorService } from "../../services/admin/api";
 
 const AuthorContext = createContext(null);
 
-// eslint-disable-next-line react-refresh/only-export-components
+
 export const useAuthors = () => {
   const context = useContext(AuthorContext);
   if (!context) {
@@ -39,7 +39,7 @@ export const AuthorProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+
     fetchAuthors();
   }, [fetchAuthors]);
 

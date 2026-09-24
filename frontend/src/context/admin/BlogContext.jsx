@@ -3,7 +3,7 @@ import { blogService } from "../../services/admin/api";
 
 const BlogContext = createContext(null);
 
-// eslint-disable-next-line react-refresh/only-export-components
+
 export const useBlogs = () => {
   const context = useContext(BlogContext);
   if (!context) {
@@ -39,7 +39,7 @@ export const BlogProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+
     fetchBlogs();
   }, [fetchBlogs]);
 

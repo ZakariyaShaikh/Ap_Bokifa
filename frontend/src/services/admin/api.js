@@ -1,9 +1,9 @@
+
 import axios from "axios";
-import { useAuth } from "../../context/admin/AuthContext";
 
 const API_BASE_URL = "/api";
 
-// Create axios instance with default config
+
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
@@ -11,37 +11,24 @@ const api = axios.create({
   },
 });
 
-// Context-aware API service that can access auth context
-export const createAuthAwareApi = () => {
-  const { getAccessToken } = useAuth();
 
-  // Create a new axios instance that uses the context's token
-  const authApi = axios.create({
-    baseURL: API_BASE_URL,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+api.interceptors.request.use(
+  (config) => {
 
-  // Request interceptor to add auth token
-  authApi.interceptors.request.use(
-    (config) => {
-      const token = getAccessToken();
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-      }
-      return config;
-    },
-    (error) => Promise.reject(error)
-  );
+    const token = localStorage.getItem("accessToken");
 
-  return authApi;
-};
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 
-// Original api instance for non-auth requests
+
 export default api;
 
-// Response interceptor to handle token refresh
+
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
@@ -57,8 +44,7 @@ api.interceptors.response.use(
           ?.split("=")[1];
 
         if (refreshToken) {
-          // Note: Refresh endpoint is not implemented in backend
-          // But we keep this for future reference
+
           localStorage.removeItem("accessToken");
           document.cookie = "refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
           window.location.href = "/login";
@@ -96,7 +82,7 @@ export const authService = {
   },
 };
 
-// ==================== AUTHORS ====================
+
 
 export const authorService = {
   getAll: async () => {
@@ -128,7 +114,7 @@ export const authorService = {
   },
 };
 
-// ==================== BOOKS ====================
+
 
 export const bookService = {
   getAll: async () => {
@@ -156,7 +142,7 @@ export const bookService = {
   },
 };
 
-// ==================== BLOGS ====================
+
 
 export const blogService = {
   getAll: async () => {
@@ -193,9 +179,9 @@ export const blogService = {
   },
 };
 
-// ==================== PUBLIC API SERVICES ====================
 
-// User profile service for customers
+
+
 export const userService = {
   getProfile: async (token) => {
     const response = await api.get("/auth/v1/profile", {

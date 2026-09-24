@@ -29,14 +29,14 @@ export const PicksForYou = () => {
           <p className="text-center text-gray-500 py-8">No data available</p>
         ) : (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* LEFT SIDE - Product Carousel/List */}
+          
           <div className="space-y-6">
             {featured.slice(0, 1).map((product) => (
               <ProductCardHorizontal key={product.id} product={product} />
             ))}
           </div>
 
-          {/* RIGHT SIDE */}
+          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {minis.map((book) => (
               <div key={book.id} className="flex gap-4 p-3 border border-gray-100 rounded-lg bg-white hover:border-gray-300 hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 active:scale-[0.98] cursor-pointer">

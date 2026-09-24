@@ -1,5 +1,12 @@
+import { Link } from "react-router-dom";
 import { useAuth } from "../context/admin/AuthContext";
 import { ProfileDropdown } from "./ProfileDropdown";
+
+import { SearchBar } from "./shop/SearchBar";
+
+import { useCart } from "../context/shop/CartContext";
+import { useWishlist } from "../context/shop/WishlistContext";
+import { CART_PATH, WISHLIST_PATH } from "../constants/shop";
 
 const navItems = [
   { label: "Home", hasCaret: true , path : "/"},
@@ -14,13 +21,6 @@ const BookIcon = () => (
     <path d="M8 17.5C8 15.6 9.6 14 11.5 14h20.5v36H11.5C9.6 50 8 48.4 8 46.5v-29Zm47 0c0-1.9-1.6-3.5-3.5-3.5H31.5v36h20.5c1.9 0 3.5-1.6 3.5-3.5v-29Z" fill="currentColor" opacity="0.95" />
     <path d="M18 18h11v28H18zm20 0h11v28H38z" fill="currentColor" opacity="0.3" />
     <path d="M20 25h7v3h-7zm0 7h7v3h-7zm0 7h7v3h-7zm22-14h7v3h-7zm0 7h7v3h-7zm0 7h7v3h-7z" fill="#f4f0ea" />
-  </svg>
-)
-
-const SearchIcon = () => (
-  <svg viewBox="0 0 24 24" aria-hidden="true" className="search-svg">
-    <circle cx="11" cy="11" r="5.5" fill="none" stroke="currentColor" strokeWidth="2" />
-    <path d="M16 16L21 21" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
   </svg>
 )
 
@@ -45,7 +45,12 @@ const IconUser = () => (
 )
 
 export const NAvbar = () => {
+
   const { isAuthenticated } = useAuth();
+
+  const { itemCount } = useCart();
+
+  const { count: wishlistCount } = useWishlist();
 
   return (
     <header className="navbar-shell">
@@ -63,12 +68,9 @@ export const NAvbar = () => {
           <div className="brand-text">bokifa</div>
         </div>
 
-        <div className="search-area">
-          <input type="text" placeholder="Search our store..." aria-label="Search our store" />
-          <button type="button" className="search-button">
-            <SearchIcon />
-            <span>Search</span>
-          </button>
+        
+        <div className="search-area !overflow-visible">
+          <SearchBar />
         </div>
 
         <div className="header-actions">
@@ -81,17 +83,19 @@ export const NAvbar = () => {
             <span className="currency-caret">▾</span>
           </button>
 
-          <button type="button" className="icon-button" aria-label="Wishlist">
+          
+          <Link to={WISHLIST_PATH} className="icon-button" aria-label="Wishlist">
             <IconHeart />
-            <span className="icon-badge">0</span>
-          </button>
+            <span className="icon-badge">{wishlistCount > 99 ? "99+" : wishlistCount}</span>
+          </Link>
 
-          <button type="button" className="icon-button" aria-label="Cart">
+          
+          <Link to={CART_PATH} className="icon-button" aria-label="Cart">
             <IconCart />
-            <span className="icon-badge cart-badge">0</span>
-          </button>
+            <span className="icon-badge cart-badge">{itemCount > 99 ? "99+" : itemCount}</span>
+          </Link>
 
-          {/* User Icon - Profile dropdown when logged in, Login/Register when logged out */}
+          
           {isAuthenticated ? (
             <ProfileDropdown />
           ) : (

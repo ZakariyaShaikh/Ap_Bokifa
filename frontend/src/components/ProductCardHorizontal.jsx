@@ -3,7 +3,7 @@ import { FaRegHeart, FaRegEye, FaSyncAlt } from 'react-icons/fa';
 export const ProductCardHorizontal = ({ product }) => {
   return (
     <div className="bg-white rounded-[16px] p-9 shadow-sm border border-gray-100 flex gap-9 max-w-[915px] h-full">
-      {/* LEFT - Product Image */}
+      
       <div className="relative w-1/2">
         {product.badge && (
           <div className="absolute top-4 left-4 bg-red-600 text-white w-14 h-14 rounded-full flex items-center justify-center font-bold z-10 text-sm">
@@ -15,7 +15,7 @@ export const ProductCardHorizontal = ({ product }) => {
           alt={product.title} 
           className="w-full h-full rounded-[16px] object-cover" 
         />
-        {/* Right side buttons */}
+        
         <div className="absolute top-4 right-4 flex flex-col gap-2">
           <button className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-50"><FaRegHeart size={20} /></button>
           <button className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-50"><FaRegEye size={20} /></button>
@@ -23,7 +23,7 @@ export const ProductCardHorizontal = ({ product }) => {
         </div>
       </div>
 
-      {/* RIGHT - Info */}
+      
       <div className="w-1/2 flex flex-col">
         <div className="flex items-center gap-2 mb-2 text-gray-400">
            <div className="flex gap-0.5">

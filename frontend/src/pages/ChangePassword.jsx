@@ -7,9 +7,7 @@ export default function ChangePassword() {
   const navigate = useNavigate();
   const { changeTempPassword, pendingEmail, setPendingEmail, isAuthenticated, user, loading: authLoading } = useAuth();
 
-  // Two modes share the same backend endpoint (PUT /auth/v1/change-tem -> email + newPassword):
-  // 1) Logged-in mode -> opened from the profile dropdown (email comes from the authenticated user)
-  // 2) Temp flow mode  -> opened after OTP verification (email comes from pendingEmail)
+
   const isLoggedInMode = isAuthenticated;
   const email = isLoggedInMode ? user?.email || "" : pendingEmail || "";
   const [newPassword, setNewPassword] = useState("");
@@ -36,7 +34,7 @@ export default function ChangePassword() {
     } finally { setLoading(false); }
   };
 
-  // Wait until auth state is restored before deciding which mode we are in
+
   if (authLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#f4f3f1] px-4">
@@ -45,7 +43,7 @@ export default function ChangePassword() {
     );
   }
 
-  // Not logged in and no pendingEmail -> there is no account to change
+
   if (!isLoggedInMode && !pendingEmail && !success) {
     return <Navigate to="/login" replace />;
   }

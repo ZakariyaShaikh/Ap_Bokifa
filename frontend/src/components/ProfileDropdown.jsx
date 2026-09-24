@@ -36,14 +36,13 @@ export const ProfileDropdown = () => {
   };
 
   const handleLogout = () => {
-    // AuthProvider clears auth state + tokens, we only handle the redirect here
+
     closeMenu();
     logout();
     navigate("/login");
   };
 
-  // "Profile" leads to the user's own area. Admins reach /admin ONLY through
-  // this explicit navigation - AdminRoute then checks user.role === "admin".
+
   const profilePath = user?.role === "admin" ? "/admin" : "/user";
 
   return (
@@ -73,7 +72,7 @@ export const ProfileDropdown = () => {
 
       {isProfileOpen && (
         <>
-          {/* Invisible overlay: clicking anywhere outside closes the menu */}
+          
           <div className="profile-dropdown-overlay" onClick={closeMenu} />
           <div className="profile-dropdown" role="menu">
             <div className="profile-dropdown-header">

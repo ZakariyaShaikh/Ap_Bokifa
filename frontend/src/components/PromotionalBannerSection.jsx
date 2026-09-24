@@ -39,7 +39,7 @@ export const PromotionalBannerSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {list.map((book, idx) => (
           <div key={book.id} className={`rounded-3xl p-8 flex items-center h-64 ${bg[idx % bg.length]}`}>
-            {/* Image (Left) */}
+            
             <div className="w-1/3 h-full flex items-center justify-center">
               <img
                 src={book.cover_image}
@@ -48,7 +48,7 @@ export const PromotionalBannerSection = () => {
               />
             </div>
 
-            {/* Content (Right) */}
+            
             <div className="w-2/3 pl-6">
               <p className="text-white opacity-90 uppercase text-xs tracking-widest font-semibold">{eyebrows[idx % eyebrows.length]}</p>
               <h2 className="text-white text-3xl font-serif font-bold my-3 leading-tight uppercase line-clamp-2">

@@ -15,7 +15,7 @@ const Header = ({ title, onMenuClick }) => {
 
   return (
     <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 lg:px-6">
-      {/* Left Side */}
+      
       <div className="flex items-center gap-4">
         <button
           onClick={onMenuClick}
@@ -26,9 +26,9 @@ const Header = ({ title, onMenuClick }) => {
         <h1 className="text-xl font-semibold text-gray-800">{title}</h1>
       </div>
 
-      {/* Right Side */}
+      
       <div className="flex items-center gap-3">
-        {/* User Menu */}
+        
         <div className="relative">
           <button
             onClick={() => setShowUserMenu(!showUserMenu)}
@@ -43,7 +43,7 @@ const Header = ({ title, onMenuClick }) => {
             <ChevronDown className="w-4 h-4 text-gray-500" />
           </button>
 
-          {/* Dropdown Menu */}
+          
           {showUserMenu && (
             <>
               <div

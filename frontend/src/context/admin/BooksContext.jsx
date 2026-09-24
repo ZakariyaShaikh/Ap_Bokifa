@@ -3,7 +3,7 @@ import { bookService } from "../../services/admin/api";
 
 const BooksContext = createContext(null);
 
-// eslint-disable-next-line react-refresh/only-export-components
+
 export const useBooks = () => {
   const context = useContext(BooksContext);
   if (!context) {
@@ -43,7 +43,7 @@ export const BooksProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+
     fetchBooks();
   }, [fetchBooks]);
 

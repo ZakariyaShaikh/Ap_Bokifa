@@ -1,17 +1,29 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { FaHeart, FaEye, FaSyncAlt, FaShoppingCart } from 'react-icons/fa';
+
+import { FaEye, FaSyncAlt } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import { useBooks } from '../context/admin/BooksContext';
+
+import { WishlistButton } from './shop/WishlistButton';
+import { AddToCartButton } from './shop/AddToCartButton';
 
 export const BooksHalfPriceSection = () => {
   const { books, loading, error } = useBooks();
+
+  const navigate = useNavigate();
   const list = Array.isArray(books) ? books.slice(0, 8) : [];
   return (
     <section className="py-20 bg-white">
       <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-10">
           <h2 className="text-3xl font-serif text-gray-900">Books Half Price</h2>
-          <button className="text-sm font-medium text-gray-700 hover:text-gray-900 border border-gray-300 px-6 py-2 rounded-full flex items-center gap-2">
+          
+          <button
+            type="button"
+            onClick={() => navigate('/books')}
+            className="text-sm font-medium text-gray-700 hover:text-gray-900 border border-gray-300 px-6 py-2 rounded-full flex items-center gap-2"
+          >
             Browse All <span>&gt;</span>
           </button>
         </div>
@@ -39,15 +51,17 @@ export const BooksHalfPriceSection = () => {
                   <img src={book.cover_image} alt={book.title} className="w-full h-80 object-cover" />
                   <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">-50%</span>
                   
+                  
                   <div className="absolute top-2 right-2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button className="bg-white p-2 rounded-full shadow hover:bg-gray-100"><FaHeart /></button>
-                    <button className="bg-white p-2 rounded-full shadow hover:bg-gray-100"><FaEye /></button>
-                    <button className="bg-white p-2 rounded-full shadow hover:bg-gray-100"><FaSyncAlt /></button>
+                    <WishlistButton book={book} />
+                    <button type="button" aria-label="Quick view" className="bg-white p-2 rounded-full shadow hover:bg-gray-100"><FaEye /></button>
+                    <button type="button" aria-label="Compare" className="bg-white p-2 rounded-full shadow hover:bg-gray-100"><FaSyncAlt /></button>
                   </div>
 
-                  <button className="absolute bottom-4 left-4 right-4 bg-green-800 text-white py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
-                    <FaShoppingCart /> Add To Cart
-                  </button>
+                  
+                  <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <AddToCartButton book={book} variant="overlay" size="sm" />
+                  </div>
                 </div>
                 
                 <div className="w-full text-center mt-4">

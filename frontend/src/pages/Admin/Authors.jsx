@@ -402,7 +402,7 @@ export default function Authors() {
         </div>
       )}
 
-      {/* Add Author Modal */}
+      
       <Modal isOpen={isAddModalOpen} onClose={() => setIsAddModalOpen(false)} title="Add New Author" size="lg">
         <AuthorForm
           author={null}
@@ -412,7 +412,7 @@ export default function Authors() {
         />
       </Modal>
 
-      {/* Edit Author Modal */}
+      
       <Modal
         isOpen={isEditModalOpen}
         onClose={() => { setIsEditModalOpen(false); setSelectedAuthor(null); }}
