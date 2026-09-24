@@ -10,9 +10,9 @@ import { CART_PATH, WISHLIST_PATH } from "../constants/shop";
 
 const navItems = [
   { label: "Home", hasCaret: true , path : "/"},
-  { label: "Shop", hasCaret: true , path : "/authors"},
+  { label: "Authors", hasCaret: true , path : "/authors"},
   { label: "Blogs", hasCaret: true , path : "/blogs" },
-  { label: "Pages", hasCaret: true , path : "/books"},
+  { label: "Books", hasCaret: true , path : "/books"},
   { label: "Contact", hasCaret: false , path : "/" },
 ]
 
@@ -117,7 +117,7 @@ export const NAvbar = () => {
           {navItems.map((item) => (
             <a key={item.label} href={item.path} className={`nav-link ${item.hasCaret ? "has-caret" : ""}`}>
               {item.label}
-              {item.hasCaret && <span className="nav-caret">⌄</span>}
+              {item.hasCaret}
             </a>
           ))}
         </div>
